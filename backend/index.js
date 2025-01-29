@@ -13,6 +13,13 @@ const userRoutes=require("./routes/User")
 const addressRoutes=require('./routes/Address')
 const reviewRoutes=require("./routes/Review")
 const wishlistRoutes=require("./routes/Wishlist")
+const vesselOwnerRoutes=require("./routes/VesselOwner")
+const vesselManagerRoutes=require("./routes/VesselManager")
+const vesselRoutes=require("./routes/Vessel")
+const rankRoutes=require("./routes/Rank")
+const crewRoutes=require("./routes/Crew")
+const crewingAgentRoutes=require("./routes/CrewingAgent")
+const proposeRoutes=require("./routes/Propose")
 const { connectToDB } = require("./database/db")
 
 
@@ -40,6 +47,13 @@ server.use("/categories",categoryRoutes)
 server.use("/address",addressRoutes)
 server.use("/reviews",reviewRoutes)
 server.use("/wishlist",wishlistRoutes)
+server.use("/vesselOwners",vesselOwnerRoutes)
+server.use("/vesselManagers",vesselManagerRoutes)
+server.use("/vessels",vesselRoutes)
+server.use("/rank",rankRoutes)
+server.use("/crews",crewRoutes)
+server.use("/crewingAgents",crewingAgentRoutes)
+server.use("/proposes",proposeRoutes)
 
 
 

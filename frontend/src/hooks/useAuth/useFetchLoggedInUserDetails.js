@@ -7,6 +7,9 @@ import { fetchCartByUserIdAsync } from '../../features/cart/CartSlice'
 import { fetchAllCategoriesAsync } from '../../features/categories/CategoriesSlice'
 import { fetchAllBrandsAsync } from '../../features/brands/BrandSlice'
 import { fetchLoggedInUserByIdAsync } from '../../features/user/UserSlice'
+import { getAllVesselOwnersAsync } from '../../features/vesselOwner/VesselOwnerSlice'
+import { getAllRankAsync } from '../../features/rank/RankSlice'
+import { getAllCrewingAgentsAsync } from '../../features/crewingAgent/CrewingAgentSlice'
 
 export const useFetchLoggedInUserDetails = (deps) => {
     
@@ -18,14 +21,17 @@ export const useFetchLoggedInUserDetails = (deps) => {
         as while login and signup only the bare-minimum information is sent by the server */
         if(deps && loggedInUser?.isVerified){
           dispatch(fetchLoggedInUserByIdAsync(loggedInUser?._id))
-          dispatch(fetchAllBrandsAsync())
-          dispatch(fetchAllCategoriesAsync())
+          // dispatch(fetchAllBrandsAsync())
+          // dispatch(fetchAllCategoriesAsync())
+          dispatch(getAllVesselOwnersAsync())
+          dispatch(getAllRankAsync())
+          dispatch(getAllCrewingAgentsAsync())
     
-          if(!loggedInUser.isAdmin){
-            dispatch(fetchCartByUserIdAsync(loggedInUser?._id))
-            dispatch(fetchAddressByUserIdAsync(loggedInUser?._id))
-            dispatch(fetchWishlistByUserIdAsync(loggedInUser?._id))
-          }
+          // if(!loggedInUser.isAdmin){
+          //   dispatch(fetchCartByUserIdAsync(loggedInUser?._id))
+          //   dispatch(fetchAddressByUserIdAsync(loggedInUser?._id))
+          //   dispatch(fetchWishlistByUserIdAsync(loggedInUser?._id))
+          // }
         }
     },[deps])
 }

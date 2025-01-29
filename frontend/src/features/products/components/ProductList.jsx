@@ -23,6 +23,7 @@ import { motion } from 'framer-motion'
 import { ProductBanner } from './ProductBanner'
 import ClearIcon from '@mui/icons-material/Clear';
 import Lottie from 'lottie-react'
+import { Link } from 'react-router-dom'
 
 
 const sortOptions=[
@@ -201,11 +202,20 @@ export const ProductList = () => {
 
 
                     <Stack rowGap={2} mt={4} >
+                        {
+                        loggedInUser?.userType=='Vessel Manager' && 
+                        <>
+                        <Typography component={Link} sx={{cursor:"pointer"}} variant='body2' to="/vessel-owners">Vessel Owners</Typography>
+                        <Typography component={Link} sx={{cursor:"pointer"}} variant='body2' to="/vessel-managers">Vessel Managers</Typography>
+                        <Typography component={Link} sx={{cursor:"pointer"}} variant='body2' to="/crew">Crew</Typography>
+                        <Typography component={Link} sx={{cursor:"pointer"}} variant='body2' to="/crew-agent">Crewing Agent</Typography>
+                        </>
+                        }
                         <Typography sx={{cursor:"pointer"}} variant='body2'>Totes</Typography>
-                        <Typography sx={{cursor:"pointer"}} variant='body2'>Backpacks</Typography>
+                        {/* <Typography sx={{cursor:"pointer"}} variant='body2'>Backpacks</Typography>
                         <Typography sx={{cursor:"pointer"}} variant='body2'>Travel Bags</Typography>
                         <Typography sx={{cursor:"pointer"}} variant='body2'>Hip Bags</Typography>
-                        <Typography sx={{cursor:"pointer"}} variant='body2'>Laptop Sleeves</Typography>
+                        <Typography sx={{cursor:"pointer"}} variant='body2'>Laptop Sleeves</Typography> */}
                     </Stack>
 
                     {/* brand filters */}

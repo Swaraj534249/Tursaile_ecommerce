@@ -14,6 +14,7 @@ import { SignupPage } from "./SignupPage";
 import { UserOrdersPage } from "./UserOrdersPage";
 import { UserProfilePage } from "./UserProfilePage";
 import { WishlistPage } from "./WishlistPage";
+import { AddProposePage } from "./AddProposePage";
 
 export {
     SignupPage,
@@ -29,6 +30,7 @@ export {
     UserOrdersPage,
     ProductUpdatePage,
     AddProductPage,
+    AddProposePage,
     AdminOrdersPage,
     WishlistPage,
     OtpVerificationPage
