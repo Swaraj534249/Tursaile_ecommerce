@@ -11,7 +11,16 @@ import { useFetchLoggedInUserDetails } from "./hooks/useAuth/useFetchLoggedInUse
 import { AddProductPage, AdminOrdersPage, CartPage, CheckoutPage, ForgotPasswordPage, HomePage, LoginPage, OrderSuccessPage, OtpVerificationPage, ProductDetailsPage, ProductUpdatePage, ResetPasswordPage, SignupPage, UserOrdersPage, UserProfilePage, WishlistPage } from './pages';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { NotFoundPage } from './pages/NotFoundPage';
-
+import { VesselOwnerPage } from './pages/VesselOwnerPage';
+import { VesselManagerPage } from './pages/VesselManagerPage';
+import { VesselPage } from './pages/VesselPage';
+import { RankPage } from './pages/RankPage';
+import { CrewPage } from './pages/CrewPage';
+import { CrewingAgentPage } from './pages/CrewingAgentPage';
+import { ProposePage } from './pages/ProposePage';
+import { AddProposePage } from './pages/AddProposePage';
+import { EditProposalPage } from './pages/EditProposalPage';
+import { Form1PDF } from './pages/Form1PDF';
 
 function App() {
 
@@ -33,6 +42,17 @@ function App() {
         <Route path='/reset-password/:userId/:passwordResetToken' element={<ResetPasswordPage/>}/>
         <Route exact path='/logout' element={<Protected><Logout/></Protected>}/>
         <Route exact path='/product-details/:id' element={<Protected><ProductDetailsPage/></Protected>}/>
+
+        <Route path='/vessel-managers' element={<Protected><VesselManagerPage/></Protected>}/>
+        <Route path='/vessel-owners' element={<Protected><VesselOwnerPage/></Protected>}/>
+        <Route path='/crews' element={<Protected><CrewPage/></Protected>}/>
+        <Route path='/crewingAgents' element={<Protected><CrewingAgentPage/></Protected>}/>
+        <Route path='/rank' element={<Protected><RankPage/></Protected>}/>
+        <Route exact path='/vessels/:id' element={<Protected><VesselPage/></Protected>}/>
+        <Route path='/propose' element={<Protected><ProposePage/></Protected>}/>
+        <Route path='/add-propose' element={<Protected><AddProposePage/></Protected>}/>
+        <Route path='/edit-propose/:id' element={<Protected><EditProposalPage/></Protected>}/>
+        {/* <Route path='/form1/:fileName' element={<Protected><Form1PDF/></Protected>}/> */}
 
         {
           loggedInUser?.isAdmin?(

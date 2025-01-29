@@ -1,4 +1,4 @@
-import {FormHelperText, Stack, TextField, Typography,Box, useTheme, useMediaQuery} from '@mui/material'
+import {FormHelperText, Stack, TextField, Typography,Box, useTheme, useMediaQuery, FormControl, InputLabel, Select, MenuItem} from '@mui/material'
 import React, { useEffect } from 'react'
 import Lottie from 'lottie-react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -54,6 +54,8 @@ export const Signup = () => {
   // this function handles signup and dispatches the signup action with credentails that api requires
   const handleSignup=(data)=>{
     const cred={...data}
+    console.log(cred);
+    
     delete cred.confirmPassword
     dispatch(signupAsync(cred))
   }
@@ -87,6 +89,17 @@ export const Signup = () => {
                       <motion.div>
                         <TextField fullWidth {...register("name",{required:"Username is required"})} placeholder='Username'/>
                         {errors.name && <FormHelperText error>{errors.name.message}</FormHelperText>}
+                      </motion.div>
+                      <motion.div>
+                        <InputLabel id="userType">User type</InputLabel>
+                          <Select {...register("userType",{required:"userType is required"})} labelId="userType" label="userType" defaultValue="">
+                            <MenuItem value=""><em>Select User Type</em></MenuItem>
+                            <MenuItem value={'Crew'}>Crew</MenuItem>
+                            <MenuItem value={'Crewing Agent'}>Crewing Agent</MenuItem>
+                            <MenuItem value={'Vessel Owner'}>Vessel Owner</MenuItem>
+                            <MenuItem value={'Vessel Manager'}>Vessel Manager</MenuItem>
+                          </Select>
+                        {errors.userType && <FormHelperText error>{errors.userType.message}</FormHelperText>}
                       </motion.div>
 
                       <motion.div>

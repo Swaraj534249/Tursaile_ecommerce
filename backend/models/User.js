@@ -23,6 +23,11 @@ const userSchema=new Schema({
         type:String,
         required:true
     },
+    userType:{
+        type:String,
+        // enum:['Crew','Crewing Agent','Vessel Owner','Vessel Manager'],
+        required:true
+    },
     isVerified:{
         type:Boolean,
         default:false
