@@ -11,13 +11,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Badge, Button, Chip, Stack, useMediaQuery, useTheme } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserInfo } from '../../user/UserSlice';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { selectCartItems } from '../../cart/CartSlice';
 import { selectLoggedInUser } from '../../auth/AuthSlice';
-import { selectWishlistItems } from '../../wishlist/WishlistSlice';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import TuneIcon from '@mui/icons-material/Tune';
-import { selectProductIsFilterOpen, toggleFilters } from '../../products/ProductSlice';
+
 
 
 
@@ -34,8 +29,8 @@ Navbar=({isProductList=false})=> {
   const theme=useTheme()
   const is480=useMediaQuery(theme.breakpoints.down(480))
 
-  const wishlistItems=useSelector(selectWishlistItems)
-  const isProductFilterOpen=useSelector(selectProductIsFilterOpen)
+  // const wishlistItems=useSelector(selectWishlistItems)
+  // const isProductFilterOpen=useSelector(selectProductIsFilterOpen)
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -52,9 +47,9 @@ Navbar=({isProductList=false})=> {
     setAnchorElManager(null);
   };
 
-  const handleToggleFilters=()=>{
-    dispatch(toggleFilters())
-  }
+  // const handleToggleFilters=()=>{
+  //   dispatch(toggleFilters())
+  // }
 
   const settings = [
     {name:"Home",to:"/"},
@@ -177,7 +172,7 @@ Navbar=({isProductList=false})=> {
                   </Stack>
             } */}
             {
-              <IconButton onClick={handleToggleFilters}><TuneIcon sx={{color:isProductFilterOpen?"black":""}}/></IconButton>
+              // <IconButton onClick={handleToggleFilters}><TuneIcon sx={{color:isProductFilterOpen?"black":""}}/></IconButton>
             }
             
             </Stack>

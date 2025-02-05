@@ -1,0 +1,33 @@
+name: client Website 
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+        id-token: write
+        contents: read 
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Set up AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: arn:aws:iam::715841364890:role/github_action_role
+          aws-region: ap-south-1
+      - name: Deploy to S3
+        run: |
+          cd frontend
+          npm install --legacy-peer-deps
+          node --version
+          npm --version
+          npm run build
+          aws s3 sync --delete ./build/  s3://${{ vars.DEPLOYMENT_BUCKET }}/
+          aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} --paths '/*'

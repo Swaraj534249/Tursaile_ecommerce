@@ -5,7 +5,6 @@ import { createProposeAsync, resetProposeAddStatus, selectProposeAddStatus, sele
 import { Button, FormControl, Input, InputLabel, MenuItem, Select, Stack, TextField, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { useForm, useWatch } from "react-hook-form"
 import { selectVesselOwners } from '../../vesselOwner/VesselOwnerSlice'
-import { selectCategories } from '../../categories/CategoriesSlice'
 import { toast } from 'react-toastify'
 import { fetchVesselByVesselOwnerIdAsync, selectVessels } from '../../vessel/VesselSlice'
 import { selectRank } from '../../rank/RankSlice'

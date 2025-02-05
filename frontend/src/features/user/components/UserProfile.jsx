@@ -2,8 +2,8 @@ import { Avatar, Button, Paper, Stack, Typography, useTheme ,TextField, useMedia
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUserInfo } from '../UserSlice'
-import { addAddressAsync, resetAddressAddStatus, resetAddressDeleteStatus, resetAddressUpdateStatus, selectAddressAddStatus, selectAddressDeleteStatus, selectAddressErrors, selectAddressStatus, selectAddressUpdateStatus, selectAddresses } from '../../address/AddressSlice'
-import { Address } from '../../address/components/Address'
+// import { addAddressAsync, resetAddressAddStatus, resetAddressDeleteStatus, resetAddressUpdateStatus, selectAddressAddStatus, selectAddressDeleteStatus, selectAddressErrors, selectAddressStatus, selectAddressUpdateStatus, selectAddresses } from '../../address/AddressSlice'
+// import { Address } from '../../address/components/Address'
 import { useForm } from 'react-hook-form'
 import { LoadingButton } from '@mui/lab'
 import {toast} from 'react-toastify'
@@ -12,16 +12,16 @@ export const UserProfile = () => {
 
     const dispatch=useDispatch()
     const {register,handleSubmit,watch,reset,formState: { errors }} = useForm()
-    const status=useSelector(selectAddressStatus)
+    // const status=useSelector(selectAddressStatus)
     const userInfo=useSelector(selectUserInfo)
-    const addresses=useSelector(selectAddresses)
+    // const addresses=useSelector(selectAddresses)
     const theme=useTheme()
     const [addAddress,setAddAddress]=useState(false)
 
     
-    const addressAddStatus=useSelector(selectAddressAddStatus)
-    const addressUpdateStatus=useSelector(selectAddressUpdateStatus)
-    const addressDeleteStatus=useSelector(selectAddressDeleteStatus)
+    // const addressAddStatus=useSelector(selectAddressAddStatus)
+    // const addressUpdateStatus=useSelector(selectAddressUpdateStatus)
+    // const addressDeleteStatus=useSelector(selectAddressDeleteStatus)
 
     const is900=useMediaQuery(theme.breakpoints.down(900))
     const is480=useMediaQuery(theme.breakpoints.down(480))
@@ -34,49 +34,49 @@ export const UserProfile = () => {
     },[])
 
 
-    useEffect(()=>{
-        if(addressAddStatus==='fulfilled'){
-            toast.success("Address added")
-        }
-        else if(addressAddStatus==='rejected'){
-            toast.error("Error adding address, please try again later")
-        }
-    },[addressAddStatus])
+    // useEffect(()=>{
+    //     if(addressAddStatus==='fulfilled'){
+    //         toast.success("Address added")
+    //     }
+    //     else if(addressAddStatus==='rejected'){
+    //         toast.error("Error adding address, please try again later")
+    //     }
+    // },[addressAddStatus])
 
-    useEffect(()=>{
+    // useEffect(()=>{
 
-        if(addressUpdateStatus==='fulfilled'){
-            toast.success("Address updated")
-        }
-        else if(addressUpdateStatus==='rejected'){
-            toast.error("Error updating address, please try again later")
-        }
-    },[addressUpdateStatus])
+    //     if(addressUpdateStatus==='fulfilled'){
+    //         toast.success("Address updated")
+    //     }
+    //     else if(addressUpdateStatus==='rejected'){
+    //         toast.error("Error updating address, please try again later")
+    //     }
+    // },[addressUpdateStatus])
 
-    useEffect(()=>{
+    // useEffect(()=>{
 
-        if(addressDeleteStatus==='fulfilled'){
-            toast.success("Address deleted")
-        }
-        else if(addressDeleteStatus==='rejected'){
-            toast.error("Error deleting address, please try again later")
-        }
-    },[addressDeleteStatus])
+    //     if(addressDeleteStatus==='fulfilled'){
+    //         toast.success("Address deleted")
+    //     }
+    //     else if(addressDeleteStatus==='rejected'){
+    //         toast.error("Error deleting address, please try again later")
+    //     }
+    // },[addressDeleteStatus])
 
-    useEffect(()=>{
-        return ()=>{
-            dispatch(resetAddressAddStatus())
-            dispatch(resetAddressUpdateStatus())
-            dispatch(resetAddressDeleteStatus())
-        }
-    },[])
+    // useEffect(()=>{
+    //     return ()=>{
+    //         dispatch(resetAddressAddStatus())
+    //         dispatch(resetAddressUpdateStatus())
+    //         dispatch(resetAddressDeleteStatus())
+    //     }
+    // },[])
 
-    const handleAddAddress=(data)=>{
-        const address={...data,user:userInfo._id}
-        dispatch(addAddressAsync(address))
-        setAddAddress(false)
-        reset()
-    }
+    // const handleAddAddress=(data)=>{
+    //     const address={...data,user:userInfo._id}
+    //     dispatch(addAddressAsync(address))
+    //     setAddAddress(false)
+    //     reset()
+    // }
 
   return (
     <Stack height={'calc(100vh - 4rem)'} justifyContent={'flex-start'} alignItems={'center'}>
@@ -102,7 +102,7 @@ export const UserProfile = () => {
                         </Stack>
                         
                         {/* add address form - state dependent*/}
-                        {
+                        {/* {
                             addAddress?(
                                 <Stack width={'100%'} component={'form'} noValidate onSubmit={handleSubmit(handleAddAddress)} rowGap={2}>
                     
@@ -148,10 +148,10 @@ export const UserProfile = () => {
                                         </Stack>
                                 </Stack>
                             ):('')
-                        }
+                        } */}
 
                         {/* mapping on addresses here  */}
-                        <Stack width={'100%'} rowGap={2}>
+                        {/* <Stack width={'100%'} rowGap={2}>
                             {
                                 addresses.length>0?(
                                     addresses.map((address)=>(
@@ -161,7 +161,7 @@ export const UserProfile = () => {
                                     <Typography textAlign={'center'} mt={2} variant='body2'>You have no added addresses</Typography>
                                 )
                             }      
-                        </Stack>
+                        </Stack> */}
 
                     </Stack>
 
